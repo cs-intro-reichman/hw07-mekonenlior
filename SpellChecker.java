@@ -10,10 +10,8 @@ public class SpellChecker {
 	}
 
 	public static String tail(String str) {
-		if (str.length() == 1) {
-			return str;
-		}
-		return str = str.substring(1);
+		String tail = str.substring(1);
+		return tail;
 	}
 
 	public static int levenshtein(String word1, String word2) {
@@ -32,8 +30,8 @@ public class SpellChecker {
 		} else {
 			int min = Math.min(levenshtein(tail(word1), word2), levenshtein(word1, tail(word2)));
 			return 1 + Math.min(min, levenshtein(tail(word1), tail(word2)));
+		}
 	}
-}
 
 	public static String[] readDictionary(String fileName) {
 		String[] dictionary = new String[3000];

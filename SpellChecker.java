@@ -31,11 +31,12 @@ public class SpellChecker {
 			return b;
 		}
 		if (head(word1) == head(word2)) {
-			levenshtein(tail(word1), tail(word2));
+			return levenshtein(tail(word1), tail(word2));
 		}
 		int deletion = levenshtein(tail(word1), word2);
 		int substitution = levenshtein(tail(word1), tail(word2));
-		return 1 + Math.min(deletion, substitution);
+		int addition = levenshtein(word1, tail(word2));
+		return 1 + Math.min(Math.min(deletion, substitution), addition);
 
 	}
 

@@ -22,8 +22,6 @@ public class SpellChecker {
 	}
 
 	public static int levenshtein(String word1, String word2) {
-		word1 = word1.toLowerCase();
-		word2 = word2.toLowerCase();
 		int a = word1.length();
 		int b = word2.length();
 		if (b == 0) {
@@ -38,7 +36,7 @@ public class SpellChecker {
 		int deletion = levenshtein(tail(word1), word2);
 		int substitution = levenshtein(tail(word1), tail(word2));
 		int addition = levenshtein(word1, tail(word2));
-		return 1 + Math.min(Math.min(deletion, substitution), addition);
+		return (1 + Math.min(deletion, Math.min(addition, substitution)));
 
 	}
 

@@ -22,6 +22,8 @@ public class SpellChecker {
 	}
 
 	public static int levenshtein(String word1, String word2) {
+		word1 = word1.toLowerCase();
+		word2 = word2.toLowerCase();
 		int a = word1.length();
 		int b = word2.length();
 		if (b == 0) {
@@ -52,14 +54,14 @@ public class SpellChecker {
 
 	public static String spellChecker(String word, int threshold, String[] dictionary) {
 		int minDistance = threshold + 1;
-		String sameWord = word;
+		String correctWord = word;
 		for (int i = 0; i < dictionary.length; i++) {
 			int distance = levenshtein(word, dictionary[i]);
 			if (distance < minDistance) {
 				minDistance = distance;
-				sameWord = dictionary[i];
+				correctWord = dictionary[i];
 			}
 		}
-		return sameWord;
+		return correctWord;
 	}
 }

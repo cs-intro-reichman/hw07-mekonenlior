@@ -54,7 +54,7 @@ public class SpellChecker {
 		int minDistance = threshold + 1;
 		String sameWord = word;
 		for (int i = 0; i < dictionary.length; i++) {
-			int distance = levenshtein(word, sameWord);
+			int distance = levenshtein(word, dictionary[i]);
 			if (distance < minDistance) {
 				minDistance = distance;
 				sameWord = dictionary[i];

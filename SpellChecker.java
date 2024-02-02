@@ -8,12 +8,14 @@ public class SpellChecker {
 		String correction = spellChecker(word, threshold, dictionary);
 		System.out.println(correction);
 	}
-
+    
+	// returns the substring of a string excluding the first character.
 	public static String tail(String str) {
 		String tail = str.substring(1);
 		return tail;
 	}
 
+	// calculates the Levenshtein distance between two strings recursively.
 	public static int levenshtein(String word1, String word2) {
 		word1 = word1.toLowerCase();
 		word2 = word2.toLowerCase();
@@ -33,6 +35,7 @@ public class SpellChecker {
 		}
 	}
 
+	// reads a dictionary file and stores the words in an array.
 	public static String[] readDictionary(String fileName) {
 		String[] dictionary = new String[3000];
 		In in = new In(fileName);
@@ -43,6 +46,7 @@ public class SpellChecker {
 		return dictionary;
 	}
 
+	// iterates over the dictionary to find the word with the minimum Levenshtein distance to the given word.
 	public static String spellChecker(String word, int threshold, String[] dictionary) {
 		int minDistance = threshold + 1;
 		String correctWord = word;
